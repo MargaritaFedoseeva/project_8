@@ -10,11 +10,6 @@ public class RaiffeisenOnline extends BaseTest {
 
     @Test
     public void testMethod() {
-
-
-        HashMap<String, String> testData = new HashMap<String, String>();
-//        testData();
-
         WebDriver driver = getDriver();
         driver.get("https://online.raiffeisen.ru/demo/");
 
@@ -33,10 +28,6 @@ public class RaiffeisenOnline extends BaseTest {
         fillField(driver.findElement(By.xpath("//ruble-transfer-form-amount//input")), "100");
         fillField(driver.findElement(By.xpath("//ruble-transfer-form-message//textarea")), "test");
         click(driver.findElement(By.xpath("//button[@class='rc-form__submit rc-button']")));
-//        click(driver.findElement(By.xpath("")));
-//        click(driver.findElement(By.xpath("")));
-//        click(driver.findElement(By.xpath("")));
-//        click(driver.findElement(By.xpath("")));
     }
 
     public void selectInput(WebElement select, String value) {
@@ -62,10 +53,10 @@ public class RaiffeisenOnline extends BaseTest {
         fillField(driver.findElement(By.xpath("//form-footer-template-form//div[@class=\"rc-row create-template__row-name\"]//input")), "Шаблон");
         click(driver.findElement(By.xpath("//span[text()='оплатить' and contains(@class,'star')]")));
 
-
-
     }
 
+
+    //дз к 12.11.2018
     @Test
     public void testMethod3() {
         WebDriver driver = getDriver();
