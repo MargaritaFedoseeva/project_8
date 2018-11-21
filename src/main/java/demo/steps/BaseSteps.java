@@ -1,11 +1,12 @@
 package demo.steps;
 
+
+
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import demo.util.DriverManager;
 import demo.util.TestProperties;
-import org.junit.After;
-import org.junit.Before;
 import org.openqa.selenium.WebDriver;
-
 
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;

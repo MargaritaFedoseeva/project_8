@@ -7,13 +7,10 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.util.HashMap;
 
 public class DepositTest extends BaseTest {
-    @Test
-    public  void testDeposit(){
+//    @Test
+//    public  void testDeposit(){
 
-        MainPage mainPage = new MainPage();
-        mainPage.acceptRegion();
-        mainPage.selectMenuItem("Вклады");
-        mainPage.selectSubMenuItem("Накопительные счета");
+
 
 //        HashMap<String,String> testData = new HashMap<String, String>();
 ////        testData();
@@ -25,7 +22,7 @@ public class DepositTest extends BaseTest {
 //        click(driver.findElement(By.xpath("//a[@class='main-menu__link' and text()='Вклады']")));
 //        click(driver.findElement(By.xpath("//a[text()='Накопительные счета']")));
 //        click(driver.findElement(By.xpath("//a[text()='Накопительные счета']")));
-    }
+//    }
      private void acceptRegion(){
         click(getDriver().findElement(By.xpath("//*[text()='Да']")));
      }

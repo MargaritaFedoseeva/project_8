@@ -1,8 +1,15 @@
 package demo.pages;
 
 import demo.annotation.FieldName;
+import demo.util.DriverManager;
+import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import java.lang.reflect.Field;
+import java.util.Arrays;
+import java.util.List;
 
 public class DepositPage extends BasePageObject {
 
@@ -38,6 +45,10 @@ public class DepositPage extends BasePageObject {
     @FieldName(name = "Отделение банка")
     public WebElement bank;
 
+    @FindBy(xpath = "//*[contains(text(),'подтверждаю')]/..")
+    @FieldName(name = "Я подтверждаю")
+    public WebElement acceptChecBox;
+
     @FindBy(xpath = "//*[text()='Выслать код']")
     @FieldName(name = "Выслать код")
     public WebElement sentCode;
@@ -46,8 +57,17 @@ public class DepositPage extends BasePageObject {
     @FieldName(name = "Заполнить поле телефона")
     public WebElement notFilledField;
 
-    public void getField(){
+    public WebElement getField(String name) throws Exception {
+        Class depositPageClass = Class.forName("demo.pages.DepositPage");
+        List<Field> fields = Arrays.asList(depositPageClass.getFields());
+        for(Field field: fields){
+            if(field.getAnnotation(FieldName.class).name().equals(name)){
+                return DriverManager.getDriver().findElement(By.xpath(field.getAnnotation(FindBy.class).xpath()));
+            }
 
+        }
+        Assert.fail("Не объявлен элемент с наименованием" +name);
+        return null;
     }
 
 }
