@@ -9,7 +9,7 @@ import java.util.List;
 public class TransferPage extends BasePageObject {
 
     @FindBy(xpath = "//div[contains(@class,'extension-menu__name')]")
-    @FieldName(name = "Втды переводов")
+    @FieldName(name = "Виды переводов")
     public List<WebElement> transferMenu;
 
     @FindBy(xpath = "//ruble-transfer-form-account//div[@class='rc-row__value']")
@@ -34,7 +34,7 @@ public class TransferPage extends BasePageObject {
 
     @FindBy(xpath = "//ruble-transfer-form-message//textarea")
     @FieldName(name = "Сообщение")
-    public WebElement ьуыыфпу;
+    public WebElement message;
 
     @FindBy(xpath = "//button[@class='rc-form__submit rc-button']")
     @FieldName(name = "Перевести")

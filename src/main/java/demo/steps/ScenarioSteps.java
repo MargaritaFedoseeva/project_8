@@ -29,26 +29,42 @@ public class ScenarioSteps {
 
     @When("поле \"(.*)\" заполняется значением \"(.*)\"")
     public void fillField(String name, String value) throws Exception {
-        Class example = Class.forName("ru.aplana.demo.pages." + currentPageName);
+        Class example = Class.forName("demo.pages." + currentPageName);
         BasePageObject page = (BasePageObject) example.newInstance();
         page.fillField(name, value);
     }
 
     @When("значение поля \"(.*)\" равно \"(.*)\"")
     public void checkField(String name, String value) throws Exception {
-        Assert.assertEquals(value, transferPage.getField(name).getAttribute("value"));
+        Class example = Class.forName("demo.pages." + currentPageName);
+        BasePageObject page = (BasePageObject) example.newInstance();
+        Assert.assertEquals(value, page.getField(name).getText());
+    }
+
+    @When("элемент \"(.*)\" не активен")
+    public void disabled(String name) throws Exception {
+        Class example = Class.forName("demo.pages." + currentPageName);
+        BasePageObject page = (BasePageObject) example.newInstance();
+        Assert.assertTrue( page.getField(name).getAttribute("disabled"), true);
+    }
+
+    @When("элемент \"(.*)\" активен")
+    public void notDisabled(String name) throws Exception {
+        Class example = Class.forName("demo.pages." + currentPageName);
+        BasePageObject page = (BasePageObject) example.newInstance();
+        Assert.assertFalse( page.getField(name).getAttribute("disabled"), false);
     }
 
     @When("значение ошибки в поле \"(.*)\" равно \"(.*)\"")
     public void checkErrorField(String name, String value) throws Exception {
-        Class example = Class.forName("ru.aplana.demo.pages." + currentPageName);
+        Class example = Class.forName("demo.pages." + currentPageName);
         BasePageObject page = (BasePageObject) example.newInstance();
         Assert.assertEquals(value, page.getError(name));
     }
 
     @When("значение не редактируемого поля \"(.*)\" равно \"(.*)\"")
     public void checkStaticTextField(String name, String value) throws Exception {
-        Class example = Class.forName("ru.aplana.demo.pages." + currentPageName);
+        Class example = Class.forName("demo.pages." + currentPageName);
         BasePageObject page = (BasePageObject) example.newInstance();
         Assert.assertEquals(value, page.getField(name).getText());
     }
@@ -60,9 +76,16 @@ public class ScenarioSteps {
 
     @When("выполнено нажатие на \"(.*)\"")
     public void click(String name) throws Exception {
-        Class example = Class.forName("ru.aplana.demo.pages." + currentPageName);
+        Class example = Class.forName("demo.pages." + currentPageName);
         BasePageObject page = (BasePageObject) example.newInstance();
         page.click(name);
+    }
+
+    @When("выполнено нажатие на (\\d+)-й елемент \"(.*)\"")
+    public void clickIem(int num, String name) throws Exception {
+        Class example = Class.forName("demo.pages." + currentPageName);
+        BasePageObject page = (BasePageObject) example.newInstance();
+        page.click(num,name);
     }
 
     @When("выпадающий список \"(.*)\" заполняется значением \"(.*)\"")

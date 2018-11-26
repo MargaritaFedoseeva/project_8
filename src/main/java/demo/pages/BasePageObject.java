@@ -15,6 +15,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.lang.reflect.Field;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public abstract class BasePageObject {
@@ -33,6 +34,10 @@ public abstract class BasePageObject {
     public void click(String name) throws Exception {
         WebElement element = getField(name);
         click(element);
+    }
+    public void click(int num, String name) throws Exception {
+        List<WebElement> elements = Collections.singletonList(getField(name));
+        elements.get(num-1).click();
     }
 
     public abstract WebElement getField(String name) throws Exception;

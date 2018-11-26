@@ -18,7 +18,7 @@ public class BaseSteps {
     @Before
     public void startScenario() {
         WebDriver driver = DriverManager.getDriver();
-        driver.get(properties.getProperty("app.url"));
+        driver.get(properties.getProperty("app1.url"));
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(120, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(120, TimeUnit.SECONDS);

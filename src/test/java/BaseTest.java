@@ -16,10 +16,6 @@ public class BaseTest {
     WebDriverWait wait;
     private static WebDriver driver;
 
-//    public static WebDriver createDriver(){
-//        switch ()
-//    }
-
     @Before
     public void startScenario() {
         ChromeOptions options = new ChromeOptions();
