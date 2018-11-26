@@ -39,6 +39,8 @@ public class ScenarioSteps {
         Class example = Class.forName("demo.pages." + currentPageName);
         BasePageObject page = (BasePageObject) example.newInstance();
         Assert.assertEquals(value, page.getField(name).getText());
+
+           ///////  21212
     }
 
     @When("элемент \"(.*)\" не активен")
