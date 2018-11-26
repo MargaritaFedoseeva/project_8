@@ -34,4 +34,9 @@ public class MainPage extends BasePageObject {
     public WebElement getField(String name) throws Exception {
         return getField(name,"demo.pages.MainPage");
     }
+
+    @Override
+    public List<WebElement> getFields(String name) throws Exception {
+        return null;
+    }
 }

@@ -49,4 +49,9 @@ public class TransferPage extends BasePageObject {
     public WebElement getField(String name) throws Exception {
         return getField(name,"demo.pages.TransferPage");
     }
+
+    @Override
+    public List<WebElement> getFields(String name) throws Exception {
+        return null;
+    }
 }

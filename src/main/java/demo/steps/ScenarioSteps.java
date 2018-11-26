@@ -3,6 +3,7 @@ package demo.steps;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import demo.pages.BasePageObject;
@@ -12,17 +13,19 @@ import demo.util.DriverManager;
 
 import java.util.concurrent.TimeUnit;
 
+import static demo.util.DriverManager.getDriver;
+
 public class ScenarioSteps {
     TransferPage transferPage = new TransferPage();
     static String currentPageName;
 
     @When("загружена страница \"(.*)\"")
-    public void stepPageLoaded(String pageName){
+    public void stepPageLoaded(String pageName) {
         currentPageName = pageName;
     }
 
     @When("выбран тип перевода \"(.*)\"")
-    public void selectMenuItem(String itemName){
+    public void selectMenuItem(String itemName) {
         transferPage.selectMenuItem(transferPage.transferMenu, itemName);
     }
 
@@ -39,22 +42,20 @@ public class ScenarioSteps {
         Class example = Class.forName("demo.pages." + currentPageName);
         BasePageObject page = (BasePageObject) example.newInstance();
         Assert.assertEquals(value, page.getField(name).getText());
-
-           ///////  21212
     }
 
     @When("элемент \"(.*)\" не активен")
     public void disabled(String name) throws Exception {
         Class example = Class.forName("demo.pages." + currentPageName);
         BasePageObject page = (BasePageObject) example.newInstance();
-        Assert.assertTrue( page.getField(name).getAttribute("disabled"), true);
+        Assert.assertTrue(page.getField(name).getAttribute("disabled"), true);
     }
 
     @When("элемент \"(.*)\" активен")
     public void notDisabled(String name) throws Exception {
         Class example = Class.forName("demo.pages." + currentPageName);
         BasePageObject page = (BasePageObject) example.newInstance();
-        Assert.assertFalse( page.getField(name).getAttribute("disabled"), false);
+        Assert.assertFalse(page.getField(name).getAttribute("disabled"), false);
     }
 
     @When("значение ошибки в поле \"(.*)\" равно \"(.*)\"")
@@ -73,7 +74,7 @@ public class ScenarioSteps {
 
     @When("поле \"(.*)\" доступно")
     public void checkIsEnabled(String name) throws Exception {
-        Assert.assertTrue("Кнопка - "+ name +" не активна", transferPage.getField(name).isEnabled());
+        Assert.assertTrue("Кнопка - " + name + " не активна", transferPage.getField(name).isEnabled());
     }
 
     @When("выполнено нажатие на \"(.*)\"")
@@ -83,11 +84,18 @@ public class ScenarioSteps {
         page.click(name);
     }
 
-    @When("выполнено нажатие на (\\d+)-й елемент \"(.*)\"")
-    public void clickIem(int num, String name) throws Exception {
+    @When("выполнено нажатие на (\\d+)-й элемент \"(.*)\"")
+    public void clickItem(int num, String name) throws Exception {
         Class example = Class.forName("demo.pages." + currentPageName);
         BasePageObject page = (BasePageObject) example.newInstance();
-        page.click(num,name);
+        page.click(num, name);
+    }
+
+    @When("выполнено нажатие на элемент \"(.*)\" с текстом \"(.*)\"")
+    public void clickIem(String name,String value) throws Exception {
+        Class example = Class.forName("demo.pages." + currentPageName);
+        BasePageObject page = (BasePageObject) example.newInstance();
+        page.click(name,value);
     }
 
     @When("выпадающий список \"(.*)\" заполняется значением \"(.*)\"")
@@ -97,14 +105,14 @@ public class ScenarioSteps {
     }
 
     @When("поле \"(.*)\" присутствует")
-    public void checkFieldIsPresent(String name)throws Exception{
+    public void checkFieldIsPresent(String name) throws Exception {
         try {
-            DriverManager.getDriver().manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+            getDriver().manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
             Assert.assertTrue(String.format("Элемент [%s] не видимый", name), transferPage.getField(name).isDisplayed());
-        }catch (NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             Assert.fail(String.format("Отсутствует элемент [%s]", name));
-        }finally {
-            DriverManager.getDriver().manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        } finally {
+            getDriver().manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         }
 
     }
@@ -134,7 +142,12 @@ public class ScenarioSteps {
                 }
         );
     }
-
+    @When("скролл до элемента \"(.*)\"")
+    public void scroll(String name) throws Exception{
+        Class example = Class.forName("demo.pages." + currentPageName);
+        BasePageObject page = (BasePageObject) example.newInstance();
+        page.scroll(name);
+    }
 
 }
 

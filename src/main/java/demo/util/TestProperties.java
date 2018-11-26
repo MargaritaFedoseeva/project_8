@@ -12,17 +12,24 @@ public class TestProperties {
 
     private static TestProperties INSTANCE = null;
 
-    private TestProperties(){
+    private TestProperties() {
 //		System.setProperty("environment", "application");
         try {
-            properties.load(new FileInputStream(new File("./" + System.getProperty("environment") + ".properties")));
+
+            if (System.getProperty("environment") == null) {
+                properties.load(new FileInputStream(new File("./" +  "application.properties")));
+            } else {
+                properties.load(new FileInputStream(new File("./" + System.getProperty("environment") + ".properties")));
+            }
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public static TestProperties getInstance() {
-        if (INSTANCE == null){
+        if (INSTANCE == null) {
             INSTANCE = new TestProperties();
         }
         return INSTANCE;

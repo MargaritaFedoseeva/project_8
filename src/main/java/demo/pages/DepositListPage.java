@@ -16,4 +16,9 @@ public class DepositListPage extends BasePageObject{
     public WebElement getField(String name) throws Exception {
         return null;
     }
+
+    @Override
+    public List<WebElement> getFields(String name) throws Exception {
+        return null;
+    }
 }

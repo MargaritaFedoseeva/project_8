@@ -70,4 +70,9 @@ public class DepositPage extends BasePageObject {
         return null;
     }
 
+    @Override
+    public List<WebElement> getFields(String name) throws Exception {
+        return null;
+    }
+
 }

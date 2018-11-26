@@ -4,6 +4,8 @@ import demo.annotation.FieldName;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 
 public class InsurancePage extends BasePageObject {
     //Сценарий 12.11.18
@@ -72,5 +74,10 @@ public class InsurancePage extends BasePageObject {
     @Override
     public WebElement getField(String name) throws Exception {
         return getField(name,"demo.pages.InsurancePage");
+    }
+
+    @Override
+    public List<WebElement> getFields(String name) throws Exception {
+        return null;
     }
 }
