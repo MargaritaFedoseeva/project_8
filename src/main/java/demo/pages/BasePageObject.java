@@ -45,7 +45,7 @@ public abstract class BasePageObject {
     }
 
     public void click(int num, String name) throws Exception {
-        List<WebElement> elements = Collections.singletonList(getField(name));
+        List<WebElement> elements = getFields(name);
         elements.get(num - 1).click();
     }
 

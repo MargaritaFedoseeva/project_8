@@ -11,6 +11,7 @@ import demo.pages.TransferPage;
 import demo.pages.TransferResultPage;
 import demo.util.DriverManager;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static demo.util.DriverManager.getDriver;
@@ -89,6 +90,14 @@ public class ScenarioSteps {
         Class example = Class.forName("demo.pages." + currentPageName);
         BasePageObject page = (BasePageObject) example.newInstance();
         page.click(num, name);
+    }
+
+    @When("присутствует (\\d+)-й элемента \"(.*)\" с текстом \"(.*)\"")
+    public void checkFieldItem(int num, String name, String value) throws Exception {
+        Class example = Class.forName("demo.pages." + currentPageName);
+        BasePageObject page = (BasePageObject) example.newInstance();
+        List<WebElement> elements = page.getFields(name);
+        Assert.assertEquals(value,  elements.get(num - 1).getText());
     }
 
     @When("выполнено нажатие на элемент \"(.*)\" с текстом \"(.*)\"")

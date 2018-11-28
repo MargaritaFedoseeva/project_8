@@ -1,5 +1,4 @@
 import demo.steps.BaseSteps;
-import demo.steps.DepositListSteps;
 import demo.steps.DepositSteps;
 import demo.steps.MainSteps;
 import org.junit.Test;
@@ -9,7 +8,6 @@ import java.util.HashMap;
 
 public class MyStepsTest extends BaseSteps {
     MainSteps mainSteps = new MainSteps();
-    DepositListSteps depositListSteps = new DepositListSteps();
     DepositSteps depositSteps = new DepositSteps();
 
     @Test

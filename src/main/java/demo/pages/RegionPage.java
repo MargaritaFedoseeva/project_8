@@ -20,6 +20,9 @@ public class RegionPage extends BasePageObject {
     @FieldName(name = "Footer")
     public WebElement footer;
 
+    @FindBy(xpath = "//div[@class='footer__top cols cols3']//li//a")
+    @FieldName(name = "Ссылки в Footer")
+    public WebElement footerLinks;
 
     @Override
     public WebElement getField(String name) throws Exception {
@@ -30,4 +33,5 @@ public class RegionPage extends BasePageObject {
     public List<WebElement> getFields(String name) throws Exception {
         return getFields(name,"demo.pages.RegionPage");
     }
+
 }

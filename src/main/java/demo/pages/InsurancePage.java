@@ -11,9 +11,9 @@ public class InsurancePage extends BasePageObject {
     //Сценарий 12.11.18
     //Форма заявки на страховую программу
 
-    @FindBy(xpath = "//a[text()='Страхование']")
-    @FieldName(name = "Пункт меню страхование")
-    public WebElement insuranceMenuItem;
+    @FindBy(xpath = "//ul[@class='main-menu']//li//a")
+    @FieldName(name = "Пункт меню")
+    public WebElement menuItem;
 
     @FindBy(xpath = "//div[5]//a[@class='menu-block__href']")
     @FieldName(name = "В путешествие")
@@ -78,6 +78,6 @@ public class InsurancePage extends BasePageObject {
 
     @Override
     public List<WebElement> getFields(String name) throws Exception {
-        return null;
+        return getFields(name,"demo.pages.InsurancePage");
     }
 }
