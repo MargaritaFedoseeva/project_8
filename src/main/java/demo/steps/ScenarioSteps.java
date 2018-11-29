@@ -35,6 +35,7 @@ public class ScenarioSteps {
     public void fillField(String name, String value) throws Exception {
         Class example = Class.forName("demo.pages." + currentPageName);
         BasePageObject page = (BasePageObject) example.newInstance();
+        Thread.sleep(2000);
         page.fillField(name, value);
     }
 
@@ -42,6 +43,7 @@ public class ScenarioSteps {
     public void checkField(String name, String value) throws Exception {
         Class example = Class.forName("demo.pages." + currentPageName);
         BasePageObject page = (BasePageObject) example.newInstance();
+        Thread.sleep(2000);
         Assert.assertEquals(value, page.getField(name).getText());
     }
 
@@ -82,6 +84,7 @@ public class ScenarioSteps {
     public void click(String name) throws Exception {
         Class example = Class.forName("demo.pages." + currentPageName);
         BasePageObject page = (BasePageObject) example.newInstance();
+        Thread.sleep(2000);
         page.click(name);
     }
 
@@ -89,6 +92,7 @@ public class ScenarioSteps {
     public void clickItem(int num, String name) throws Exception {
         Class example = Class.forName("demo.pages." + currentPageName);
         BasePageObject page = (BasePageObject) example.newInstance();
+        Thread.sleep(2000);
         page.click(num, name);
     }
 
@@ -131,6 +135,7 @@ public class ScenarioSteps {
         fields.asMap(String.class, String.class).forEach(
                 (k, v) -> {
                     try {
+                        Thread.sleep(2000);
                         fillField(k, v);
                     } catch (Exception e) {
                         e.printStackTrace();

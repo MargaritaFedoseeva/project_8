@@ -20,6 +20,23 @@ public class MortgagePage extends BasePageObject {
     @FieldName(name = "Город")
     public WebElement city;
 
+
+    @FindBy(xpath = "//span[@id='form_program-button']//span[@class='ui-selectmenu-text']")
+    @FieldName(name = "Вид ипотечной программы")
+    public WebElement typeOfMortgageProgram;
+
+    @FindBy(xpath = "//li[@class='ui-menu-item']//div")
+    @FieldName(name = "Значение из списка")
+    public WebElement valueList;
+
+    @FindBy(xpath = "//span[@id='form_documents-button']//span[2]")
+    @FieldName(name = "Уровень дохода подтверждаю")
+    public WebElement confirmIncomeLevel;
+
+    @FindBy(xpath = "//span[@id='form_category-button']//span[2]")
+    @FieldName(name = "Являюсь")
+    public WebElement am;
+
     @FindBy(xpath = "//span[@class='checkbox-block__span']")
     @FieldName(name = "Чек-бокс - Знаю свою ипотечную программу")
     public WebElement checkBox;
