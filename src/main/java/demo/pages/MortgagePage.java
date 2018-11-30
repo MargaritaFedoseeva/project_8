@@ -29,6 +29,11 @@ public class MortgagePage extends BasePageObject {
     @FieldName(name = "Значение из списка")
     public WebElement valueList;
 
+    @FindBy(xpath = " //button[@class='likes__button likes__button_yes']")
+    @FieldName(name = "Да")
+    public WebElement btnYes;
+
+
     @FindBy(xpath = "//span[@id='form_documents-button']//span[2]")
     @FieldName(name = "Уровень дохода подтверждаю")
     public WebElement confirmIncomeLevel;

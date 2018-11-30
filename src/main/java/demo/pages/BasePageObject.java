@@ -32,6 +32,7 @@ public abstract class BasePageObject {
     public void fillField(String name, String value) throws Exception {
         WebElement element = getField(name);
         fillField(element, value);
+
     }
 
     public void click(String name) throws Exception {
@@ -40,9 +41,9 @@ public abstract class BasePageObject {
     }
 
     public void scroll(String name) throws Exception {
-        JavascriptExecutor js = (JavascriptExecutor)getDriver();
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
         WebElement element = getField(name);
-        js.executeScript("return arguments[0].scrollIntoView(false);",element);
+        js.executeScript("return arguments[0].scrollIntoView(false);", element);
     }
 
     public void click(int num, String name) throws Exception {
@@ -53,7 +54,7 @@ public abstract class BasePageObject {
     public void click(String name, String value) throws Exception {
         List<WebElement> elements = getFields(name);
         for (WebElement element : elements) {
-            if (element.getText() .equalsIgnoreCase(value)) {
+            if (element.getText().equalsIgnoreCase(value)) {
                 click(element);
                 break;
             }
@@ -62,6 +63,7 @@ public abstract class BasePageObject {
     }
 
     public abstract WebElement getField(String name) throws Exception;
+
     public abstract List<WebElement> getFields(String name) throws Exception;
 
     public WebElement getField(String name, String className) throws Exception {
@@ -90,9 +92,9 @@ public abstract class BasePageObject {
 
     public void fillField(WebElement field, String value) {
         Actions action = new Actions(DriverManager.getDriver());
-        action.click(field);
-        field.clear();
-        action.sendKeys(field,value,Keys.TAB).build().perform();
+//        action.sendKeys(field,Keys.BACK_SPACE).build().perform();
+        action.click(field).build().perform();
+        action.sendKeys(field, value).build().perform();
 //        action.click(field).sendKeys(value).build().perform();
 //        field.sendKeys(value);
     }
